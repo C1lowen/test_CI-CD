@@ -1,10 +1,10 @@
-name: project cicd flow
+name: Java CI with Maven
 
 on:
   push:
-    branches: [ master ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ master ]
+    branches: [ "master" ]
 
 jobs:
   build:
@@ -16,8 +16,8 @@ jobs:
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
-            java-version: '17'
-            distribution: 'temurin'
-            cache: maven
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
       - name: Build with Maven
-        run: mvn clean install
+        run: mvn -B package --file pom.xml
